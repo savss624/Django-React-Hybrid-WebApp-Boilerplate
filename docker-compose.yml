@@ -19,7 +19,20 @@ services:
       - DB_USER=devuser
       - DB_PASS=changeme
     depends_on:
+      - front-end
       - db
+
+  front-end:
+    build:
+      context: .
+      dockerfile: "Dockerfile.js"
+      args:
+        - DEV=true
+    volumes:
+      - "./app/front-end:/front-end"
+      - "./app/static:/static"
+    command: >
+      sh -c "npm run dev"
 
   db:
     image: postgres:13-alpine
