@@ -1,16 +1,28 @@
+const glob = require("glob");
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const getEntryObject = () => {
+  const entries = {};
+  glob
+    .sync(path.join(__dirname, "../src/apps/**/index.js"))
+    .forEach((entryPath) => {
+      const name = path.basename(path.dirname(entryPath), ".js");
+      entries[name] = entryPath;
+    });
+  return entries;
+};
+
 module.exports = {
-  context: path.resolve(__dirname, "src"),
-  entry: { "test-app": "./test-app/index.js" },
+  context: path.resolve(__dirname),
+  entry: getEntryObject(),
   output: {
-    filename: "[name]/bundle.js",
-    path: path.resolve(__dirname, "../../static"),
+    filename: "js/[name].js",
+    path: path.resolve(__dirname, "../build"),
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "[name]/style.css",
+      filename: "css/[name].css",
     }),
   ],
   module: {
@@ -47,5 +59,11 @@ module.exports = {
         ],
       },
     ],
+  },
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+      name: "vendor",
+    },
   },
 };
