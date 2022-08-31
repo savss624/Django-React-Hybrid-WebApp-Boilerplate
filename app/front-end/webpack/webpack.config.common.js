@@ -62,8 +62,15 @@ module.exports = {
   },
   optimization: {
     splitChunks: {
+      name: "vendors",
       chunks: "all",
-      name: "vendor",
+      cacheGroups: {
+        tailwindcss: {
+          name: "tailwind",
+          test: /tailwind.css$/,
+          chunks: "all",
+        },
+      },
     },
   },
 };

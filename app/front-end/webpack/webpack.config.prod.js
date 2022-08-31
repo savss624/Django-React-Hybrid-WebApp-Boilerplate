@@ -7,5 +7,12 @@ module.exports = merge(common, {
   mode: "production",
   optimization: {
     minimizer: [new CssMinimizerWebpackPlugin(), new TerserPlugin()],
+    splitChunks: {
+      cacheGroups: {
+        tailwindcss: {
+          enforce: true,
+        },
+      },
+    },
   },
 });

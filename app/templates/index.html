@@ -3,11 +3,16 @@
 <html>
   <head>
     <title>Getting Started with Django and Webpack</title>
-    <link rel="stylesheet" href="{% static 'css/test-app.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'build/css/tailwind.django.css' %}"
+    />
   </head>
   <body>
+    <h1 class="bg-teal-700">Hello from django html!</h1>
     <div id="root" />
     <script src="{% static 'js/test-app.js' %}"></script>
-    <script src="{% static 'js/vendor.js' %}"></script>
+    <script src="{% static 'js/vendors.js' %}"></script>
   </body>
 </html>

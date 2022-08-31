@@ -4,8 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "clear": "rm -rf build ../static/build",
+    "django-tailwind-watch": "npx tailwindcss -c ./tailwind.config.django.js -i src/styles/tailwind.css -o ../static/build/css/tailwind.django.css --watch",
+    "django-tailwind": "npx tailwindcss -c ./tailwind.config.django.js -i src/styles/tailwind.css -o ../static/build/css/tailwind.django.css",
     "dev": "webpack --config webpack/webpack.config.dev.js",
-    "prod": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js"
+    "start": "npm run clear && npm run django-tailwind-watch & npm run dev",
+    "build": "webpack --config webpack/webpack.config.prod.js",
+    "prod": "cross-env NODE_ENV=production npm run clear && npm run django-tailwind && npm run build"
   },
   "keywords": [],
   "author": "",

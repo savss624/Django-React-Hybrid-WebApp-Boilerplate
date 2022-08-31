@@ -30,9 +30,10 @@ services:
         - DEV=true
     volumes:
       - "./app/front-end:/front-end"
+      - "./app/templates:/templates"
       - "./app/static:/static"
     command: >
-      sh -c "npm run dev"
+      sh -c "npm run start"
 
   db:
     image: postgres:13-alpine

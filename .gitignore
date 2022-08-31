@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Mac os
+.DS_Store
+
+# django static files
+staticfiles
