@@ -8,11 +8,15 @@
       rel="stylesheet"
       href="{% static 'build/css/tailwind.django.css' %}"
     />
+    <script src="{% static 'js/test-app.js' %}" defer></script>
+    <script src="{% static 'js/vendors.js' %}" defer></script>
+    {{ msg|json_script:'context' }}
   </head>
   <body>
-    <h1 class="bg-teal-700">Hello from django html!</h1>
+    <h1 class="text-3xl font-bold underline">
+      Django React Hybrid Architecture
+    </h1>
+    <p>Django html</p>
     <div id="root" />
-    <script src="{% static 'js/test-app.js' %}"></script>
-    <script src="{% static 'js/vendors.js' %}"></script>
   </body>
 </html>

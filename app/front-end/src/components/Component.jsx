@@ -2,14 +2,24 @@ import React from "react";
 import "../styles/tailwind.css";
 
 const Component = () => {
-  // const [count, setCount] = React.useState(5);
-  // React.useEffect(() => {
-  //   console.log(count);
-  // }, [count]);
+  const CONTEXT_MSG = JSON.parse(
+    document.getElementById("context").textContent
+  );
+
+  const [API_MSG, setAPI_MSG] = React.useState("");
+  React.useEffect(() => {
+    fetch("/api")
+      .then((res) => res.json())
+      .then((data) => {
+        setAPI_MSG(data.msg);
+      });
+  }, []);
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Howdy Boys</h1>
+      <p className="font-bold underline">React Component</p>
+      <p>{CONTEXT_MSG}</p>
+      <p>{API_MSG}</p>
     </>
   );
 };
