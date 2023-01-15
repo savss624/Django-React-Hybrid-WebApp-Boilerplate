@@ -9,8 +9,11 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - "./apps:/apps"
-      - "./fe-apps:/fe-apps"
+      - ./apps:/apps
+      - ./fe-apps:/fe-apps
+      - ./static:/static
+      - ./templates:/templates
+      - ./build:/build
     command: > 
         sh -c "npm run start &
               /apps/manage.py wait_for_db &&

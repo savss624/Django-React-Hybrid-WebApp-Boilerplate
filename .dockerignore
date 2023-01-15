@@ -3,19 +3,23 @@
 
 # Git
 .git
-**/.gitignore
+.gitignore
+.github/
 
 # Docker
 .docker
 
 # Python
-app/__pycache__/
-app/*/__pycache__/
-app/*/*/__pycache__/
-app/*/*/*/__pycache__/
+apps/__pycache__/
+apps/*/__pycache__/
+apps/*/*/__pycache__/
+apps/*/*/*/__pycache__/
 .env/
 .venv/
 venv/
 
 # Readme
 README.md
+
+# VS Code config
+.vscode/

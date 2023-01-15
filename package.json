@@ -4,13 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clear": "rm -rf ./fe-apps/build ./apps/static/build",
-    "django-tailwind-watch": "npx tailwindcss -c ./tailwind.config.django.js -i fe-apps/src/styles/tailwind.css -o ./apps/static/build/css/tailwind.django.css --watch",
-    "django-tailwind": "npx tailwindcss -c ./tailwind.config.django.js -i fe-apps/src/styles/tailwind.css -o ./apps/static/build/css/tailwind.django.css",
+    "django-tailwind-watch": "npx tailwindcss -c ./tailwind.config.django.js -i fe-apps/src/styles/tailwind.css -o ./build/css/tailwind.django.css --watch",
+    "django-tailwind": "npx tailwindcss -c ./tailwind.config.django.js -i fe-apps/src/styles/tailwind.css -o ./build/css/tailwind.django.css",
     "dev": "webpack --config fe-apps/webpack/webpack.config.dev.js",
-    "start": "npm run clear && npm run django-tailwind-watch & npm run dev",
+    "start": "npm run django-tailwind-watch & npm run dev",
     "prod": "webpack --config fe-apps/webpack/webpack.config.prod.js",
-    "build": "cross-env NODE_ENV=production npm run clear && npm run django-tailwind && npm run prod"
+    "build": "cross-env NODE_ENV=production npm run django-tailwind && npm run prod"
   },
   "keywords": [],
   "author": "",

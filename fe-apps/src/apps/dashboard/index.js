@@ -14,11 +14,15 @@ const App = () => {
   }, []);
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center">
       <p>{context}</p>
       <p>Content 2</p>
       <div style={{ color: "red" }}>Content 3</div>
       <div className="font-bold dark:text-white">Content 4</div>
+      <img
+        className="w-64 h-64 object-cover mt-12"
+        src="static/images/startup.jpeg"
+      />
     </div>
   );
 };

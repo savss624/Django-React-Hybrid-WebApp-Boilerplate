@@ -2,13 +2,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Getting Started with Django and Webpack</title>
-    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
-    <link
-      rel="stylesheet"
-      href="{% static 'build/css/tailwind.django.css' %}"
-    />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'styles/tailwind.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/dashboard.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/tailwind.django.css' %}" />
     <script src="{% static 'js/dashboard.js' %}" defer></script>
     <script src="{% static 'js/vendors.js' %}" defer></script>
     {{ msg|json_script:'context' }}
@@ -23,6 +20,10 @@
         >
           Company Name
         </p>
+        <img
+          class="w-64 h-64 object-cover mb-12"
+          src="{% static 'images/startup.jpeg' %}"
+        />
         <p
           class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
         >

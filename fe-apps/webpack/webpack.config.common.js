@@ -19,11 +19,11 @@ module.exports = {
   entry: getEntryObject(),
   output: {
     filename: "js/[name].js",
-    path: path.resolve(__dirname, "../build"),
+    path: path.resolve(__dirname, "../../build"),
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "css/[name].css",
+      filename: "styles/[name].css",
     }),
   ],
   module: {
