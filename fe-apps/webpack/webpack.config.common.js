@@ -1,6 +1,7 @@
 const glob = require("glob");
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const tailwindcss = require("tailwindcss");
 
 const getEntryObject = () => {
   const entries = {};
@@ -52,7 +53,14 @@ module.exports = {
             options: {
               postcssOptions: {
                 ident: "postcss",
-                plugins: [require("tailwindcss"), require("autoprefixer")],
+                plugins: [
+                  tailwindcss({
+                    content: [
+                      path.join(__dirname, "../src/**/*.{js,jsx,ts,tsx}"),
+                    ],
+                  }),
+                  require("autoprefixer"),
+                ],
               },
             },
           },

@@ -1,6 +1,9 @@
+# macOS-specific files
+**/.DS_Store
+
 # Git
 .git
-.gitignore
+**/.gitignore
 
 # Docker
 .docker
@@ -13,3 +16,6 @@ app/*/*/*/__pycache__/
 .env/
 .venv/
 venv/
+
+# Readme
+README.md

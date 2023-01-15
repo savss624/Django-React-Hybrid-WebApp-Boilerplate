@@ -27,7 +27,8 @@ urlpatterns = [
         name="api-docs",
     ),
     path("__debug__/", include("debug_toolbar.urls")),
-    path("api/user/", include("user.urls")),
-    path("", views.View.as_view()),
-    path("api/", views.Api),
+    path("api/user/", include("user.urls"), name="user_model_apis"),
+    path("", views.domain, name="domain_url"),
+    path("auth/", views.Auth.as_view(), name="authenication_page"),
+    path("dashboard", views.Dashboard.as_view(), name="dashboard_page")
 ]

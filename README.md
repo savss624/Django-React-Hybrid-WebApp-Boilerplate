@@ -1,4 +1,4 @@
-# Django boilerplate
+# boilerplate
 
 ### Tech stack
 
@@ -11,4 +11,5 @@
 - TailwindCSS
 - ESLint
 - Yarn
+- NPM
 - Git

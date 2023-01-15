@@ -9,31 +9,20 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - "./app:/app"
-    command: >
-      sh -c "python manage.py wait_for_db && 
-             python manage.py runserver 0.0.0.0:8000"
+      - "./apps:/apps"
+      - "./fe-apps:/fe-apps"
+    command: > 
+        sh -c "npm run start &
+              /apps/manage.py wait_for_db &&
+              /apps/manage.py migrate &&
+              /apps/manage.py runserver 0.0.0.0:8000"
     environment:
       - DB_HOST=db
       - DB_NAME=devdb
       - DB_USER=devuser
       - DB_PASS=changeme
     depends_on:
-      - front-end
       - db
-
-  front-end:
-    build:
-      context: .
-      dockerfile: "Dockerfile.js"
-      args:
-        - DEV=true
-    volumes:
-      - "./app/front-end:/front-end"
-      - "./app/templates:/templates"
-      - "./app/static:/static"
-    command: >
-      sh -c "npm run start"
 
   db:
     image: postgres:13-alpine
