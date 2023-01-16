@@ -1,5 +1,5 @@
 const authToken = () => {
-  return "5b1426b944386638d809816644e2d916e5892d91";
+  return "d1c0966b19b09a7d33c74264d54b6baed298ffbf";
 };
 
 export default authToken;

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/tailwind.django.css' %}" />
     <script src="{% static 'js/dashboard.js' %}" defer></script>
     <script src="{% static 'js/vendors.js' %}" defer></script>
-    {{ msg|json_script:'context' }}
+    {{ content|json_script:'context' }}
   </head>
   <body>
     <section class="bg-gray-50 dark:bg-gray-900">

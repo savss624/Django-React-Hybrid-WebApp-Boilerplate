@@ -1,0 +1,29 @@
+"""
+Core URL mappings.
+"""
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+from django.contrib import admin
+from django.urls import path, include
+from . import views
+from django.conf.urls.static import static
+from django.conf import settings
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("api/schema/", SpectacularAPIView.as_view(), name="api-schema"),
+    path(
+        "api/docs/",
+        SpectacularSwaggerView.as_view(url_name="api-schema"),
+        name="api-docs",
+    ),
+    path("__debug__/", include("debug_toolbar.urls")),
+    path("api/user/", include("user.urls"), name="user_model_apis"),
+    path("", views.domain, name="domain_url"),
+    path("auth/", views.Auth.as_view(), name="authenication_page"),
+    path("dashboard", views.Dashboard.as_view(), name="dashboard_page"),
+]
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+    )

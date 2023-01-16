@@ -21,7 +21,7 @@ const App = () => {
       <div className="font-bold dark:text-white">Content 4</div>
       <img
         className="w-64 h-64 object-cover mt-12"
-        src="static/images/startup.jpeg"
+        src="static/images/webpack.png"
       />
     </div>
   );

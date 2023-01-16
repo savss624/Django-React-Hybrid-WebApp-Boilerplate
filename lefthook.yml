@@ -1,0 +1,7 @@
+pre-commit:
+  parallel: true
+  commands:
+    flake8_backend_lint:
+      root: "apps/"
+      glob: "*.py"
+      run: flake8 {staged_files}

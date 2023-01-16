@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-  app:
+  webserver:
     build:
       context: .
       args:
@@ -14,11 +14,12 @@ services:
       - ./static:/static
       - ./templates:/templates
       - ./build:/build
-    command: > 
-        sh -c "npm run start &
-              /apps/manage.py wait_for_db &&
-              /apps/manage.py migrate &&
-              /apps/manage.py runserver 0.0.0.0:8000"
+      - dev-static-data:/vol/web
+    command: >
+      sh -c "npm run start &
+            /manage.py wait_for_db &&
+            /manage.py migrate &&
+            /manage.py runserver 0.0.0.0:8000"
     environment:
       - DB_HOST=db
       - DB_NAME=devdb
@@ -38,3 +39,4 @@ services:
 
 volumes:
   dev-db-data:
+  dev-static-data:

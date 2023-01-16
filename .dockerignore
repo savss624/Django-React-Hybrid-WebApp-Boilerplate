@@ -18,6 +18,9 @@ apps/*/*/*/__pycache__/
 .venv/
 venv/
 
+# Dependency directories
+node_modules/
+
 # Readme
 README.md
 
