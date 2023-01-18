@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-  webserver:
+  dev-webserver:
     build:
       context: .
       args:
@@ -17,14 +17,15 @@ services:
       - dev-static-data:/vol/web
     command: >
       sh -c "npm run start &
-            /manage.py wait_for_db &&
-            /manage.py migrate &&
-            /manage.py runserver 0.0.0.0:8000"
+            python manage.py wait_for_db &&
+            python manage.py migrate &&
+            python manage.py runserver 0.0.0.0:8000"
     environment:
       - DB_HOST=db
       - DB_NAME=devdb
       - DB_USER=devuser
       - DB_PASS=changeme
+      - DEBUG=1
     depends_on:
       - db
 

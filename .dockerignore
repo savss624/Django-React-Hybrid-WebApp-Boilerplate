@@ -5,6 +5,7 @@
 .git
 .gitignore
 .github/
+lefthook.yml
 
 # Docker
 .docker
@@ -26,3 +27,6 @@ README.md
 
 # VS Code config
 .vscode/
+
+# Environments
+.env.sample
