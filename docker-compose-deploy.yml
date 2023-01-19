@@ -6,8 +6,6 @@ services:
       context: .
     restart: always
     volumes:
-      - ./build:/build
-      - ./apps:/apps
       - static-data:/vol/web
     environment:
       - DB_HOST=db
@@ -36,7 +34,7 @@ services:
     depends_on:
       - webserver
     ports:
-      - 8000:8000
+      - 80:8000
     volumes:
       - static-data:/vol/web
 

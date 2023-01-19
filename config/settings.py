@@ -6,25 +6,21 @@ import os
 import sys
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+BASE_DIR = "/"
 sys.path.insert(0, "/apps")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', 'changeme')
+SECRET_KEY = os.environ.get("SECRET_KEY", "changeme")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(int(os.environ.get('DEBUG', 0)))
+DEBUG = bool(int(os.environ.get("DEBUG", 0)))
 
 ALLOWED_HOSTS = []
 ALLOWED_HOSTS.extend(
     filter(
         None,
-        os.environ.get('ALLOWED_HOSTS', '').split(','),
+        os.environ.get("ALLOWED_HOSTS", "").split(","),
     )
 )
 
@@ -74,7 +70,7 @@ ROOT_URLCONF = "core.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "../../templates")],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -87,7 +83,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "config.wsgi.application"
+sys.path.insert(0, "/config")
+WSGI_APPLICATION = "wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -139,7 +136,10 @@ USE_TZ = True
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
 
-STATICFILES_DIRS = ["/build", "/static"]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "build"),
+    os.path.join(BASE_DIR, "static"),
+]
 
 STATIC_ROOT = "/vol/web/staticfiles"
 MEDIA_ROOT = "/vol/web/mediafiles"

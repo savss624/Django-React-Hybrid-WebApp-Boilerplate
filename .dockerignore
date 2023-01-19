@@ -1,5 +1,5 @@
 # macOS-specific files
-**/.DS_Store
+.DS_Store
 
 # Git
 .git
@@ -11,6 +11,7 @@ lefthook.yml
 .docker
 
 # Python
+config/__pycache__/
 apps/__pycache__/
 apps/*/__pycache__/
 apps/*/*/__pycache__/
@@ -30,3 +31,6 @@ README.md
 
 # Environments
 .env.sample
+
+# SQL dump
+db.sql

@@ -27,14 +27,16 @@ RUN python -m venv /py && \
         --disabled-password \
         --no-create-home \
         local-user && \
+    mkdir -p /build && \
     mkdir -p /vol/web/mediafiles && \
     mkdir -p /vol/web/staticfiles && \
-    chown -R local-user:local-user /vol && \
-    chmod -R 755 /vol && \
+    chown -R local-user:local-user /build /vol && \
+    chmod -R 755 /build /vol && \
     chmod -R +x /scripts
 
-ENV PATH="/scripts:/py/bin:$PATH"
-ENV NODE_PATH="/node_modules/.bin:$NODE_PATH"
+ENV PATH /scripts:/py/bin:$PATH
+ENV NODE_PATH /node_modules/.bin
+ENV PATH $NODE_PATH:$PATH
 
 USER local-user
 
