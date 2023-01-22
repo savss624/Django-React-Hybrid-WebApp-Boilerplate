@@ -5,6 +5,8 @@ import "../../styles/tailwind.css";
 import getAuththTokenFromLocalStorage from "../../utils/getAuthToken.js";
 import "../../styles/dashboard.css";
 
+import webpackImage from "../../assets/images/webpack.png"
+
 const App = () => {
   const context = JSON.parse(document.getElementById("context").textContent);
 
@@ -21,7 +23,7 @@ const App = () => {
       <div className="font-bold dark:text-white">Content 4</div>
       <img
         className="w-64 h-64 object-cover mt-12"
-        src="static/images/webpack.png"
+        src={webpackImage}
         alt="wepack"
       />
     </div>

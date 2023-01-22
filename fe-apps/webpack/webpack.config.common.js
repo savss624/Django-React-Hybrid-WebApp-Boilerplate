@@ -29,6 +29,28 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(png|jpe?g|gif|svg)$/,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 10 * 1024,
+              fallback: "file-loader",
+              name: "[name].[ext]",
+              outputPath: "images/",
+            },
+          },
+          // {
+          //   loader: "image-webpack-loader",
+          //   options: {
+          //     pngquant: {
+          //       quality: [0.9, 0.95],
+          //     },
+          //   },
+          // },
+        ],
+      },
+      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
