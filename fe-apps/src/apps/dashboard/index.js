@@ -24,7 +24,7 @@ const App = () => {
       <img
         className="w-64 h-64 object-cover mt-12"
         src={webpackImage}
-        alt="wepack"
+        // alt="wepack"
       />
     </div>
   );
