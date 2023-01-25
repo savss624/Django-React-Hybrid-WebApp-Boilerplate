@@ -9,7 +9,11 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - .:/boilerplate
+      - ./apps:/boilerplate/apps
+      - ./fe-apps:/boilerplate/fe-apps
+      - ./templates:/boilerplate/templates
+      - ./static:/boilerplate/static
+      - ./build:/boilerplate/build
       - dev-static-data:/vol/web
     command: >
       sh -c "npm run start &

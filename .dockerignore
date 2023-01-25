@@ -1,5 +1,5 @@
 # macOS-specific files
-.DS_Store
+**/.DS_Store
 
 # Git
 .git
@@ -16,9 +16,6 @@ apps/__pycache__/
 apps/*/__pycache__/
 apps/*/*/__pycache__/
 apps/*/*/*/__pycache__/
-.env/
-.venv/
-venv/
 
 # Dependency directories
 node_modules/
@@ -31,6 +28,13 @@ README.md
 
 # Environments
 .env.sample
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
 # PostgreSQL dump
 db.tar

@@ -2,7 +2,9 @@
 
 ### Local Setup
 
-- Install docker, docker-compose, yarn, flake8 & git.
+- Install [git](https://github.com/git-guides/install-git), [docker](https://docs.docker.com/get-docker/) & [docker-compose](https://docs.docker.com/compose/install/).
+- Install [python pip](https://www.python.org/downloads/) & [flake8](https://pypi.org/project/flake8/).
+- Install [node](https://nodejs.org/en/download/) & [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable).
 - Do `yarn install --frozen-lockfile`.
 - Run `docker-compose build` & `docker-compose up` to run the app.
 - Run `docker exec -i db_container_name pg_restore -c -U postgres -d devdb  < db.tar` parallely for populating local db using `db.tar` dump.
