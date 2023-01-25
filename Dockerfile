@@ -2,9 +2,9 @@ FROM python:3.9-alpine3.13
 LABEL maintainer="savss624"
 
 ENV PYTHONUNBUFFERED 1
-ENV APP_HOME $PWD
+ENV APP_HOME /boilerplate
 
-COPY . .
+COPY . $APP_HOME
 
 WORKDIR $APP_HOME
 EXPOSE 8000
@@ -20,23 +20,25 @@ RUN python -m venv /py && \
         then /py/bin/pip install -r requirements.dev.txt ; \
     fi && \
     apk add --update --no-cache nodejs npm yarn && \
-    yarn install --frozen-lockfile && \
+    yarn install --frozen-lockfile --modules-folder /node_modules && \
     rm -f requirements*.txt && \
     apk del .tmp-build-deps && \
     adduser \
         --disabled-password \
         --no-create-home \
         local-user && \
-    mkdir -p /build && \
+    mkdir -p build && \
     mkdir -p /vol/web/mediafiles && \
     mkdir -p /vol/web/staticfiles && \
-    chown -R local-user:local-user /build /vol && \
-    chmod -R 755 /build /vol && \
-    chmod -R +x /scripts
+    chown -R local-user:local-user build /vol && \
+    chmod -R 755 build /vol && \
+    chmod -R +x scripts
 
-ENV PATH /scripts:/py/bin:$PATH
+ENV PYTHON_PATH /py/bin
 ENV NODE_PATH /node_modules/.bin
-ENV PATH $NODE_PATH:$PATH
+ENV SCRIPTS_PATH scripts
+
+ENV PATH $SCRIPTS_PATH:$PYTHON_PATH:$NODE_PATH:$PATH
 
 USER local-user
 
