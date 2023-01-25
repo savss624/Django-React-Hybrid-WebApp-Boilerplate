@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import "../../styles/tailwind.css";
 
@@ -6,8 +6,6 @@ import getAuththTokenFromLocalStorage from "../../utils/getAuthToken.js";
 import AuthContainer from "../../components/AuthContainer.jsx";
 
 const App = () => {
-  const [authToken, setAuthToken] = useState("");
-
   useEffect(() => {
     const token = getAuththTokenFromLocalStorage();
     if (token !== "") window.location.href = "/dashboard";
@@ -19,7 +17,7 @@ const App = () => {
         <p className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
           Company Name
         </p>
-        <AuthContainer authToken={authToken} setAuthToken={setAuthToken} />
+        <AuthContainer />
       </div>
     </section>
   );

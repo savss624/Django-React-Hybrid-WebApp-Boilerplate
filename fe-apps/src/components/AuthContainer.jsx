@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const AuthContainer = (props) => {
+const AuthContainer = () => {
   const [accountExists, setAccountExists] = useState(true);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -20,8 +20,8 @@ const AuthContainer = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.token);
-        props.setAuthToken(data.token);
+        localStorage.setItem("boilerplate_authtoken", data.token);
+        window.location.href = "/dashboard";
       });
   }
 
@@ -48,7 +48,7 @@ const AuthContainer = (props) => {
         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
           Sign in to your account
         </h1>
-        <form className="space-y-4 md:space-y-6" action="#">
+        <form className="space-y-4 md:space-y-6">
           {!accountExists && (
             <div>
               <label
@@ -101,6 +101,7 @@ const AuthContainer = (props) => {
           </div>
           {accountExists && (
             <button
+              type="button"
               className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               onClick={authenticate}
             >
@@ -109,6 +110,7 @@ const AuthContainer = (props) => {
           )}
           {!accountExists && (
             <button
+              type="button"
               className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               onClick={createAccount}
             >
@@ -119,6 +121,7 @@ const AuthContainer = (props) => {
             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
               Don't have an account yet?{" "}
               <button
+                type="button"
                 className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                 onClick={() => setAccountExists(false)}
               >
@@ -130,6 +133,7 @@ const AuthContainer = (props) => {
             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
               Already a user?{" "}
               <button
+                type="button"
                 className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                 onClick={() => setAccountExists(true)}
               >
