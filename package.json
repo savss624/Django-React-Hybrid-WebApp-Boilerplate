@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "django-tailwind-watch": "npx tailwindcss -c ./tailwind.config.django.js -i fe-apps/src/styles/tailwind.css -o ./build/css/tailwind.django.css --watch",
-    "django-tailwind": "npx tailwindcss -c ./tailwind.config.django.js -i fe-apps/src/styles/tailwind.css -o ./build/css/tailwind.django.css",
-    "dev": "webpack --config fe-apps/webpack/webpack.config.dev.js",
-    "start": "npm run django-tailwind-watch & npm run dev",
-    "prod": "webpack --config fe-apps/webpack/webpack.config.prod.js",
-    "build": "cross-env NODE_ENV=production npm run django-tailwind && npm run prod"
+    "dev:django-tailwind": "tailwindcss -c ./tailwind.config.django.js -i fe-apps/src/styles/tailwind.css -o ./build/css/tailwind.django.css --watch",
+    "prod:django-tailwind": "tailwindcss -c ./tailwind.config.django.js -i fe-apps/src/styles/tailwind.css -o ./build/css/tailwind.django.css --minify",
+    "dev:webpack": "webpack --config fe-apps/webpack/webpack.config.dev.js",
+    "start": "concurrently 'yarn:dev:*'",
+    "prod:webpack": "webpack --config fe-apps/webpack/webpack.config.prod.js",
+    "build": "cross-env NODE_ENV=production concurrently 'yarn:prod:*'"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +24,7 @@
     "@babel/preset-react": "^7.18.6",
     "autoprefixer": "^10.4.8",
     "babel-loader": "^8.2.5",
+    "concurrently": "^7.6.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.0.0",

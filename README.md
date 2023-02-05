@@ -32,5 +32,5 @@
 - TailwindCSS
 - ESLint
 - Flake8
-- Yarn & NPM
+- Yarn
 - Git

@@ -1,4 +1,6 @@
 FROM python:3.9-alpine3.13
+# alpine 3.13 - node 14.
+
 LABEL maintainer="savss624"
 
 ENV PYTHONUNBUFFERED 1
@@ -19,7 +21,7 @@ RUN python -m venv /py && \
     if [ $DEV = "true" ]; \
         then /py/bin/pip install -r requirements.dev.txt ; \
     fi && \
-    apk add --update --no-cache nodejs npm yarn && \
+    apk add --update --no-cache nodejs yarn && \
     yarn install --frozen-lockfile --modules-folder /node_modules && \
     rm -f requirements*.txt && \
     apk del .tmp-build-deps && \
