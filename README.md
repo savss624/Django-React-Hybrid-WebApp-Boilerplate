@@ -1,4 +1,4 @@
-# boilerplate
+# Django React Hybrid WebApp Boilerplate
 
 ### Local Setup
 
