@@ -29,8 +29,10 @@
 - PostgreSQL
 - Webpack
 - ReactJS ( ES6 )
+- Zustand
 - TailwindCSS
 - ESLint
 - Flake8
 - Yarn
 - Git
+- Lefthook
